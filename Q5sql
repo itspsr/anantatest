@@ -1,0 +1,7 @@
+Q5. select price from table where price in (
+    select 
+        distinct price 
+    from 
+    (select t.price,rownumber() over () as rownum from table t) as x 
+    where x.rownum = 2 --or 3, 4, 5, etc
+)
